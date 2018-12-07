@@ -1,0 +1,19 @@
+sudo: false
+language: node_js
+node_js:
+  - "6"
+  - "7"
+  - "8"
+  - "9"
+  - "10"
+  - "11"
+  - "lts/Boron"
+  - "lts/Carbon"
+  - "lts/Dubnium"
+  - stable
+before_script:
+  - chmod a+x ./test/scripts/bootstrap.js
+  - chmod a+x ./test/scripts/clean.js
+  - $_
+script:
+  - npm test
