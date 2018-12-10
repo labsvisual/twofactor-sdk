@@ -14,7 +14,7 @@ class Mocker {
         const defaults = {
             method: 'GET',
             requestBody: '',
-            isErorr: false,
+            isError: false,
             responseType: 'otpSent'
         };
 
