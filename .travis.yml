@@ -17,3 +17,4 @@ before_script:
   - ./test/scripts/clean.js
 script:
   - npm test
+  - npm run report-coverage
