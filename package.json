@@ -10,7 +10,11 @@
     "/lib"
   ],
   "scripts": {
+<<<<<<< HEAD
     "test": "$(./__tests__/scripts/bootstrap.js) | tap-dot",
+=======
+    "test": "$(./__tests__/scripts/bootstrap.js) | tap-dot", 
+>>>>>>> 425468609c67552ba7f7e3664ff82ef41c9e3c8c
     "dev": "nodemon --exec $(./__tests__/scripts/bootstrap.js)",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t a560f117-ba73-4251-bf8a-bf2bbdb58bbe"
   },
