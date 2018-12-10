@@ -1,6 +1,6 @@
 {
   "name": "@twofactor/sdk",
-  "version": "1.0.0",
+  "version": "1.0.0-rc.1",
   "description": "A simple NodeJS wrapper around the 2Factor API.",
   "main": "lib/index.js",
   "directories": {
