@@ -6,8 +6,11 @@
   "directories": {
     "lib": "lib"
   },
+  "files": [
+    "/lib"
+  ],
   "scripts": {
-    "test": "$(./__tests__/scripts/bootstrap.js) | tap-dot", 
+    "test": "$(./__tests__/scripts/bootstrap.js) | tap-dot",
     "dev": "nodemon --exec $(./__tests__/scripts/bootstrap.js)",
     "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t a560f117-ba73-4251-bf8a-bf2bbdb58bbe"
   },
