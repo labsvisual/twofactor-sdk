@@ -123,7 +123,14 @@ As an object, it can have the following properties:
 
     Type: `String`
 
-    Required when `otpType` is `OtpTypes.custom`.
+    Required when `otpType` is `OtpTypes.custom`
+
+- `template`
+
+    Type: `String`
+
+    You can specify the name of the template with this parameter. Remember, this will
+    **only** work when `deliveryType` is `DeliveryTypes.SMS`.
 
 #### Return Value
 A promise, which when resolved, gives the Session ID.
