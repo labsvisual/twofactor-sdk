@@ -104,21 +104,6 @@ test( 'throw an error when the otpType is custom and the OTP is not provided', t
 
 } );
 
-test( 'throw an error when a template is provided for a voice OTP', t => {
-
-    t.throws( () => {
-
-        TwoFactor.OTP.sendOtp( {
-            phoneNumber: '1234567890',
-            deliveryType: TwoFactor.OTP.DeliveryTypes.voice,
-            template: 'test'
-        } );
-
-    }, Error );
-    t.end();
-
-} );
-
 test( 'throw an error when an invalid template is provided', t => {
 
     t.throws( () => {
@@ -391,22 +376,7 @@ test( 'sends the correct request to verify an OTP', async t => {
 
     try {
 
-        let response = await TwoFactor.OTP.verifyOtp( { otp, sessionId } );
-
-        t.equal( typeof response.__MOCKED_RESPONSE_DATA__, 'object' );
-        t.equal( response.__MOCKED_RESPONSE_DATA__.Status, 'Success' );
-        t.equal( response.__MOCKED_RESPONSE_DATA__.Details, 'OTP Matched' );
-
-        mocker.mock( {
-            subPath: `SMS/VERIFY/${ sessionId }/${ otp }`,
-            responseType: 'otpMatched'
-        } );
-
-        response = await TwoFactor.OTP.verifyOtp( {
-            sessionId,
-            otp,
-            otpType: TwoFactor.OTP.OtpTypes.custom
-        } );
+        const response = await TwoFactor.OTP.verifyOtp( { otp, sessionId } );
 
         t.equal( typeof response.__MOCKED_RESPONSE_DATA__, 'object' );
         t.equal( response.__MOCKED_RESPONSE_DATA__.Status, 'Success' );
