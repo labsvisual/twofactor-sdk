@@ -1,0 +1,18 @@
+{
+    "$root": {
+        "allowUndefined": false,
+        "allowNull": false,
+        "allowedTypes": "object"
+    },
+    "otp": {
+        "allowedTypes": "string"
+    },
+    "sessionId": {
+        "allowedTypes": "string"
+    },
+    "deliveryType": {
+        "isOptional": true,
+        "allowedTypes": "string",
+        "oneOf": [ "SMS", "VOICE" ]
+    }
+}

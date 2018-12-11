@@ -1,61 +1,94 @@
 {
-  "name": "@twofactor/sdk",
-  "version": "1.0.0-rc.1",
-  "description": "A simple NodeJS wrapper around the 2Factor API.",
-  "main": "lib/index.js",
-  "directories": {
-    "lib": "lib"
-  },
-  "files": [
-    "/lib"
-  ],
-  "scripts": {
-    "test": "$(./__tests__/scripts/bootstrap.js) | tap-dot",
-    "dev": "nodemon --exec $(./__tests__/scripts/bootstrap.js)",
-    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t a560f117-ba73-4251-bf8a-bf2bbdb58bbe"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/labsvisual/twofactor-sdk.git"
-  },
-  "keywords": [
-    "two",
-    "factor",
-    "otp",
-    "authentication",
-    "india",
-    "number",
-    "phone"
-  ],
-  "author": "Shreyansh Pandey",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/labsvisual/twofactor-sdk/issues"
-  },
-  "homepage": "https://github.com/labsvisual/twofactor-sdk#readme",
-  "devDependencies": {
-    "codecov": "^3.1.0",
-    "nock": "^10.0.3",
-    "nodemon": "^1.18.7",
-    "nyc": "^13.1.0",
-    "tap-dot": "^2.0.0",
-    "tape": "^4.9.1"
-  },
-  "optionalDependencies": {
-    "@babel/core": "^7.2.0",
-    "@babel/polyfill": "^7.0.0",
-    "@babel/preset-env": "^7.2.0",
-    "@babel/register": "^7.0.0"
-  },
-  "nyc": {
-    "exclude": [
-      "lib/index.js",
-      "**/bootstrap.js",
-      "__tests__"
-    ]
-  },
-  "dependencies": {
-    "request": "^2.88.0",
-    "request-promise-native": "^1.0.5"
-  }
+    "name": "@twofactor/sdk",
+    "version": "1.1.0",
+    "description": "A simple NodeJS wrapper around the 2Factor API.",
+    "main": "lib/index.js",
+    "directories": {
+        "lib": "lib"
+    },
+    "files": [
+        "/lib"
+    ],
+    "scripts": {
+        "test": "$(./__tests__/scripts/bootstrap.js) | tap-dot",
+        "dev": "nodemon --exec $(./__tests__/scripts/bootstrap.js)",
+        "lint": "xo --cwd=./lib && xo --cwd=./__tests__",
+        "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov -t a560f117-ba73-4251-bf8a-bf2bbdb58bbe"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/labsvisual/twofactor-sdk.git"
+    },
+    "keywords": [
+        "two",
+        "factor",
+        "otp",
+        "authentication",
+        "india",
+        "number",
+        "phone"
+    ],
+    "author": "Shreyansh Pandey",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/labsvisual/twofactor-sdk/issues"
+    },
+    "homepage": "https://github.com/labsvisual/twofactor-sdk#readme",
+    "devDependencies": {
+        "codecov": "^3.1.0",
+        "nock": "^10.0.4",
+        "nodemon": "^1.18.8",
+        "nyc": "^13.1.0",
+        "tap-dot": "^2.0.0",
+        "tape": "^4.9.1",
+        "xo": "^0.23.0"
+    },
+    "optionalDependencies": {
+        "@babel/core": "^7.2.0",
+        "@babel/polyfill": "^7.0.0",
+        "@babel/preset-env": "^7.2.0",
+        "@babel/register": "^7.0.0"
+    },
+    "nyc": {
+        "exclude": [
+            "lib/index.js",
+            "**/bootstrap.js",
+            "__tests__"
+        ]
+    },
+    "xo": {
+        "esnext": true,
+        "semicolon": true,
+        "space": 4,
+        "rules": {
+            "space-in-parens": [
+                "error",
+                "always"
+            ],
+            "padded-blocks": [
+                "error",
+                "always"
+            ],
+            "array-bracket-spacing": [
+                "error",
+                "always"
+            ],
+            "object-curly-spacing": [
+                "error",
+                "always"
+            ],
+            "template-curly-spacing": [
+                "error",
+                "always"
+            ],
+            "computed-property-spacing": [
+                "error",
+                "always"
+            ]
+        }
+    },
+    "dependencies": {
+        "request": "^2.88.0",
+        "request-promise-native": "^1.0.5"
+    }
 }

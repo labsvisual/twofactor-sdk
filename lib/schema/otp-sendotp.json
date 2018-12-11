@@ -1,0 +1,35 @@
+{
+    "$root": {
+        "allowUndefined": false,
+        "allowNull": false,
+        "allowedTypes": [ "string", "object" ]
+    },
+    "phoneNumber": {
+        "allowedTypes": "string"
+    },
+    "otp": {
+        "when": {
+            "key": "otpType",
+            "value": "custom"
+        },
+        "allowedTypes": "string"
+    },
+    "template": {
+        "when": {
+            "key": "deliveryType",
+            "value": "SMS"
+        },
+        "allowedTypes": "string",
+        "isOptional": true
+    },
+    "otpType": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "oneOf": [ "custom", "AUTOGEN" ]
+    },
+    "deliveryType": {
+        "isOptional": true,
+        "allowedTypes": "string",
+        "oneOf": [ "SMS", "VOICE" ]
+    }
+}

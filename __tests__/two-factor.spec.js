@@ -1,11 +1,11 @@
 const test = require( 'tape' );
 
 const ApiBase = require( '../lib/base' );
-const { TwoFactor } = require('./fixtures');
+const { TwoFactor } = require( './fixtures' );
 
 const resources = [ 'OTP' ];
 
-for( const resource of resources ) {
+for ( const resource of resources ) {
 
     test( `has the resource - ${ resource }`, t => {
 

@@ -1,20 +1,25 @@
 sudo: false
 language: node_js
 node_js:
-  - "6"
-  - "7"
-  - "8"
-  - "9"
-  - "10"
-  - "11"
-  - "lts/Boron"
-  - "lts/Carbon"
-  - "lts/Dubnium"
-  - stable
+    - "6"
+    - "7"
+    - "8"
+    - "9"
+    - "10"
+    - "11"
+    - "lts/Boron"
+    - "lts/Carbon"
+    - "lts/Dubnium"
+    - stable
 before_script:
-  - chmod a+x ./__tests__/scripts/bootstrap.js
-  - chmod a+x ./__tests__/scripts/clean.js
-  - ./__tests__/scripts/clean.js
+    - chmod a+x ./__tests__/scripts/bootstrap.js
+    - chmod a+x ./__tests__/scripts/clean.js
+    - ./__tests__/scripts/clean.js
 script:
-  - npm test
-  - npm run report-coverage
+    - npm run lint && npm test
+    - npm run report-coverage
+branches:
+    only:
+        - master
+        - develop
+        - /^release\/.*$/

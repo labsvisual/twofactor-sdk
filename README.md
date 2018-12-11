@@ -2,15 +2,17 @@
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://forthebadge.com)
 
+[![codecov](https://codecov.io/gh/labsvisual/twofactor-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/labsvisual/twofactor-sdk)
+[![TravisCI Build](https://travis-ci.com/labsvisual/twofactor-sdk.svg?branch=master)](https://travis-ci.com/labsvisual/twofactor-sdk)
 
 [![GitHub issues](https://img.shields.io/github/issues/labsvisual/twofactor-sdk.svg)](https://github.com/labsvisual/twofactor-sdk/issues)
-[![codecov](https://codecov.io/gh/labsvisual/twofactor-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/labsvisual/twofactor-sdk)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 [![GitHub license](https://img.shields.io/github/license/labsvisual/twofactor-sdk.svg)](https://github.com/labsvisual/twofactor-sdk/blob/master/LICENSE)
+[![XO code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/xojs/xo)
 
 ## Introduction
 
-Pretty much what the titel says: a wrapper around the [2Factor](https://2factor.in/) API.
+Pretty much what the title says: a wrapper around the [2Factor](https://2factor.in/) API.
 
 ### Installation
 
@@ -121,7 +123,14 @@ As an object, it can have the following properties:
 
     Type: `String`
 
-    Required when `otpType` is `OtpTypes.custom`.
+    Required when `otpType` is `OtpTypes.custom`
+
+- `template`
+
+    Type: `String`
+
+    You can specify the name of the template with this parameter. Remember, this will
+    **only** work when `deliveryType` is `DeliveryTypes.SMS`.
 
 #### Return Value
 A promise, which when resolved, gives the Session ID.
@@ -176,4 +185,4 @@ However, to make everyone's life a little easier, I would suggest the following:
 - `git-flow` workflow is **highly** recommended; clone the repository, pull the current `develop` branch and start a new feature by `git flow feature start <featureName>`.
 - Once you are done with your feature and you are satisfied with the test cases, commit all the changes and just quickly glance through the codebase (the part you changed; this is just done to make sure that the repository does not contain commits which change a space, etc.)
 - Whoever uses `git-flow` has the habit of merging the code back with `develop` by running `git flow feature finish <featureName>`. Please do **not** do this. Instead, create a pull request with your `feature/featureName` branch.
-- In the pull request, be sure to quickly outline what all you have modified. In case there are breaking changes, **do not forget** to mention that in the pull request's descriptions. 
+- In the pull request, be sure to quickly outline what all you have modified. In case there are breaking changes, **do not forget** to mention that in the pull request's descriptions.

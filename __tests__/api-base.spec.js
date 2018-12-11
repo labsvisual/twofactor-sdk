@@ -1,6 +1,6 @@
 const test = require( 'tape' );
 
-const ApiBase = require('../lib/base');
+const ApiBase = require( '../lib/base' );
 
 test( 'throws an Error when an undefined or null value is provided as the API Key', t => {
 
@@ -21,7 +21,7 @@ test( 'initializes correctly on proper parameters', t => {
 } );
 
 const testCases = [ 12345, () => {}, {}, [] ];
-for( const testCase of testCases ) {
+for ( const testCase of testCases ) {
 
     test( `throws a TypeError when the API Key is not a string: <${ typeof testCase }>`, t => {
 
@@ -38,7 +38,13 @@ const invalidApiKeys = [
     'd3aa88e2c75441e08ba64198a34aa0a2'
 ];
 
-for( const testCase in invalidApiKeys ) {
+for ( const testCase in invalidApiKeys ) {
+
+    if ( !Object.prototype.hasOwnProperty.call( invalidApiKeys, testCase ) ) {
+
+        continue;
+
+    }
 
     test( `throws a TypeError when the API key is not properly formatted: <case ${ testCase }>`, t => {
 

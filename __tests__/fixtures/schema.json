@@ -1,0 +1,7 @@
+{
+    "$root": {
+        "allowUndefined": false,
+        "allowNull": false,
+        "allowType": [ "string", "object" ]
+    }
+}
