@@ -46,7 +46,7 @@ test( 'validates the root element correctly', t => {
     } ) );
 
     validateResult = validator.validate();
-    t.equal( validateResult.length, 0 );
+    t.ok( validateResult );
 
     validator = new SchemaValidator( Object.assign( {}, Fixtures.exampleSchema, {
         $root: {
@@ -55,7 +55,7 @@ test( 'validates the root element correctly', t => {
     } ) );
 
     validateResult = validator.validate( null );
-    t.equal( validateResult.length, 0 );
+    t.ok( validateResult );
 
     t.end();
 
@@ -112,7 +112,7 @@ test( 'validates a child', t => {
         test: 'hello!'
     } );
 
-    t.equals( validateResult.length, 0 );
+    t.ok( validateResult );
 
     validateResult = validator.validate( {
         test: []
@@ -177,7 +177,7 @@ test( 'validates a complex schema', t => {
         test: 'stuff'
     } );
 
-    t.equal( validateResult.length, 0 );
+    t.ok( validateResult );
 
     validator = new SchemaValidator( schema );
 
@@ -194,14 +194,14 @@ test( 'validates a complex schema', t => {
         newProperty: true
     } );
 
-    t.equal( validateResult.length, 0 );
+    t.ok( validateResult );
 
     validateResult = validator.validate( {
         test: 'stuff',
         newProperty: 'hello'
     } );
 
-    t.equal( validateResult.length, 0 );
+    t.ok( validateResult );
 
     validateResult = validator.validate( {
         test: 'stuff',
