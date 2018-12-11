@@ -15,14 +15,9 @@ before_script:
     - chmod a+x ./__tests__/scripts/bootstrap.js
     - chmod a+x ./__tests__/scripts/clean.js
     - ./__tests__/scripts/clean.js
-jobs:
-    include:
-        - stage: lint
-          script: npm run lint
-        - stage: test
-          script: npm test
-        - stage: coverage
-          script: npm run report-coverage
+script:
+    - npm run lint && npm test
+    - npm run report-coverage
 branches:
     only:
         - master
