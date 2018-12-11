@@ -21,18 +21,20 @@ class Mocker {
         const params = Object.assign( defaults, mockingParameters );
 
         if ( typeof params.subPath === 'undefined' || !params.subPath || typeof params.subPath !== 'string' ) {
+
             throw new Error( 'A resource base path is required for mocking the HTTP request.' );
+
         }
 
         const statusCode = ( params.isError && 400 ) || 200;
 
         return nock( this.apiEndpoint )
             .intercept( `/${ params.subPath }`, params.method )
-            .reply( statusCode, ( uri, requestBody ) => {
+            .reply( statusCode, uri => {
 
                 if ( params.isError ) {
 
-                    switch( params.errorType ) {
+                    switch ( params.errorType ) {
 
                         case 'apiKey':
                             return Fixtures.errors.apiKeyError;
@@ -49,7 +51,7 @@ class Mocker {
                 }
 
                 let responseBody = {};
-                switch( params.responseType ) {
+                switch ( params.responseType ) {
 
                     case 'otpSent':
                         responseBody = Fixtures.responses.otpSent;
@@ -62,7 +64,7 @@ class Mocker {
                 }
 
                 return {
-                    '__MOCKED_RESPONSE_DATA__': {
+                    __MOCKED_RESPONSE_DATA__: {
                         ...responseBody
                     },
                     requestParameters: {

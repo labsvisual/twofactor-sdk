@@ -7,8 +7,8 @@ module.exports = {
         },
         apiKeyError: {
             Status: 'Error',
-            Details: 'Invalid API \/ SessionId Combination - No Entry Exists'
-        },
+            Details: 'Invalid API / SessionId Combination - No Entry Exists'
+        }
     },
 
     responses: {
