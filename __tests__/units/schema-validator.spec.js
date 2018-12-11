@@ -46,7 +46,7 @@ test( 'validates the root element correctly', t => {
     } ) );
 
     validateResult = validator.validate();
-    t.equal( validateResult.length, 0 );
+    t.ok( validateResult );
 
     validator = new SchemaValidator( Object.assign( {}, Fixtures.exampleSchema, {
         $root: {
@@ -55,7 +55,7 @@ test( 'validates the root element correctly', t => {
     } ) );
 
     validateResult = validator.validate( null );
-    t.equal( validateResult.length, 0 );
+    t.ok( validateResult );
 
     t.end();
 
@@ -112,7 +112,7 @@ test( 'validates a child', t => {
         test: 'hello!'
     } );
 
-    t.equals( validateResult.length, 0 );
+    t.ok( validateResult );
 
     validateResult = validator.validate( {
         test: []
@@ -144,6 +144,18 @@ test( 'validates a complex schema', t => {
                 key: 'test'
             },
             allowedTypes: [ 'boolean', 'string' ]
+        },
+        whenValue: {
+            when: {
+                key: 'testThree',
+                value: 'hello'
+            },
+            allowedTypes: 'string',
+            oneOf: [ 'foo', 'bar' ]
+        },
+        testThree: {
+            isOptional: true,
+            allowedTypes: 'string'
         }
     };
 
@@ -165,7 +177,7 @@ test( 'validates a complex schema', t => {
         test: 'stuff'
     } );
 
-    t.equal( validateResult.length, 0 );
+    t.ok( validateResult );
 
     validator = new SchemaValidator( schema );
 
@@ -182,14 +194,14 @@ test( 'validates a complex schema', t => {
         newProperty: true
     } );
 
-    t.equal( validateResult.length, 0 );
+    t.ok( validateResult );
 
     validateResult = validator.validate( {
         test: 'stuff',
         newProperty: 'hello'
     } );
 
-    t.equal( validateResult.length, 0 );
+    t.ok( validateResult );
 
     validateResult = validator.validate( {
         test: 'stuff',
@@ -199,6 +211,44 @@ test( 'validates a complex schema', t => {
     t.equal( validateResult.length, 1 );
     t.equal( validateResult[ 0 ].key, 'newProperty' );
     t.ok( validateResult[ 0 ].error.indexOf( 'got array' ) > -1 );
+
+    validateResult = validator.validate( {
+        testThree: 'helloz',
+        test: 'stuff',
+        newProperty: 'test'
+    } );
+
+    t.ok( validateResult );
+
+    validateResult = validator.validate( {
+        testThree: 'hello',
+        test: 'stuff',
+        newProperty: 'test'
+    } );
+
+    t.equal( validateResult.length, 1 );
+    t.equal( validateResult[ 0 ].key, 'whenValue' );
+    t.ok( validateResult[ 0 ].error.indexOf( 'is required when' ) > -1 );
+
+    validateResult = validator.validate( {
+        testThree: 'hello',
+        test: 'stuff',
+        newProperty: 'test',
+        whenValue: 'too'
+    } );
+
+    t.equal( validateResult.length, 1 );
+    t.equal( validateResult[ 0 ].key, 'whenValue' );
+    t.ok( validateResult[ 0 ].error.indexOf( 'one of foo' ) > -1 );
+
+    validateResult = validator.validate( {
+        testThree: 'hello',
+        test: 'stuff',
+        newProperty: 'test',
+        whenValue: 'foo'
+    } );
+
+    t.ok( validateResult );
 
     t.end();
 
