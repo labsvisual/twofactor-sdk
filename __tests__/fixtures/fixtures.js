@@ -19,6 +19,14 @@ module.exports = {
         otpMatched: {
             Status: 'Success',
             Details: 'OTP Matched'
+        },
+        transactionalBalance: {
+            Status: 'Success',
+            Details: '500'
+        },
+        transactionalMessage: {
+            Status: 'Success',
+            Details: '26aa1e7a-7756-41c4-956d-4c0182ea5c1102187af6c0.61189183'
         }
     },
 

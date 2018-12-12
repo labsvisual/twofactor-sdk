@@ -9,6 +9,36 @@ class Mocker {
 
     }
 
+    processMultipart( data ) {
+
+        let counter = 1;
+        let oldKey = '';
+
+        const dataParts = data.split( '\r\n' ).filter( part => part )
+            .filter( part => part.substring( 0, 5 ) !== '-----' )
+            .reduce( ( acc, current ) => {
+
+                if ( counter % 2 === 0 ) {
+
+                    acc[ oldKey ] = current;
+
+                } else {
+
+                    oldKey = current.split( ';' )[ 1 ].trim().split( '=' )[ 1 ].replace( /"/g, '' );
+                    acc[ oldKey ] = '';
+
+                }
+
+                counter++;
+
+                return acc;
+
+            }, {} );
+
+        return dataParts;
+
+    }
+
     mock( mockingParameters ) {
 
         const defaults = {
@@ -30,7 +60,7 @@ class Mocker {
 
         return nock( this.apiEndpoint )
             .intercept( `/${ params.subPath }`, params.method )
-            .reply( statusCode, uri => {
+            .reply( statusCode, ( uri, requestBody ) => {
 
                 if ( params.isError ) {
 
@@ -53,6 +83,14 @@ class Mocker {
                 let responseBody = {};
                 switch ( params.responseType ) {
 
+                    case 'transactionalMessage':
+                        responseBody = Fixtures.responses.transactionalMessage;
+                        break;
+
+                    case 'transactionalBalance':
+                        responseBody = Fixtures.responses.transactionalBalance;
+                        break;
+
                     case 'otpSent':
                         responseBody = Fixtures.responses.otpSent;
                         break;
@@ -68,7 +106,8 @@ class Mocker {
                         ...responseBody
                     },
                     requestParameters: {
-                        uri
+                        uri,
+                        requestBody: this.processMultipart( requestBody )
                     }
                 };
 
