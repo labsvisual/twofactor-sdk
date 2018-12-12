@@ -4,6 +4,7 @@
 
 [![codecov](https://codecov.io/gh/labsvisual/twofactor-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/labsvisual/twofactor-sdk)
 [![TravisCI Build](https://travis-ci.com/labsvisual/twofactor-sdk.svg?branch=master)](https://travis-ci.com/labsvisual/twofactor-sdk)
+[![npm version](https://badge.fury.io/js/%40twofactor%2Fsdk.svg)](https://badge.fury.io/js/%40twofactor%2Fsdk)
 
 [![GitHub issues](https://img.shields.io/github/issues/labsvisual/twofactor-sdk.svg)](https://github.com/labsvisual/twofactor-sdk/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
@@ -193,7 +194,7 @@ Gets the balance for the account.
 `.getBalance()`
 
 #### Return Value
-A promise, which when resolves, gives the amount of credits left. 
+A promise, which when resolves, gives the amount of credits left.
 
 ### `sendMessage`
 Send a message to the specified phone number(s).
