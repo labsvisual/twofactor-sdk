@@ -78,7 +78,7 @@ As of now, only the following resources are supported:
         - SMS
     - Validating a OTP
 
-- [Transactional SMS](#sms__transactional)
+- [Transactional SMS](#resource__Transactional)
     - Sending a Message
         - Open Template
         - Dynamic Template
