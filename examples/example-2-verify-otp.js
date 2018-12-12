@@ -8,14 +8,16 @@ const testFunction = async () => {
 
         const response = await apiInstance.OTP.verifyOtp( {
             otp: '123456',
-            sessionId: 'some-guid-here'
-            // deliveryType: apiInstance.DeliveryTypes.voice
+            sessionId: 'some-guid-here',
+            deliveryType: apiInstance.DeliveryTypes.sms // Default; it can also be .voice
         } );
 
         console.log( response );
 
-    } catch (error) {
+    } catch ( error ) {
+
         console.log( 'Error: ', error );
+
     }
 
 };
