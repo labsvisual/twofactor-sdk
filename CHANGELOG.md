@@ -1,5 +1,14 @@
 ## Changelog
 
+### v1.2.0
+
+#### Major Changes
+- The Transactional messages API is now implemented.
+
+#### Minor Changes
+- Examples linted and fixed
+- Added the version badge to the Readme
+
 ### v1.1.0
 
 #### Major Changes

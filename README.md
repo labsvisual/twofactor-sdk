@@ -4,6 +4,7 @@
 
 [![codecov](https://codecov.io/gh/labsvisual/twofactor-sdk/branch/master/graph/badge.svg)](https://codecov.io/gh/labsvisual/twofactor-sdk)
 [![TravisCI Build](https://travis-ci.com/labsvisual/twofactor-sdk.svg?branch=master)](https://travis-ci.com/labsvisual/twofactor-sdk)
+[![npm version](https://badge.fury.io/js/%40twofactor%2Fsdk.svg)](https://badge.fury.io/js/%40twofactor%2Fsdk)
 
 [![GitHub issues](https://img.shields.io/github/issues/labsvisual/twofactor-sdk.svg)](https://github.com/labsvisual/twofactor-sdk/issues)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
@@ -73,9 +74,15 @@ apiObject.OTP.sendOtp( { phoneNumber: 'Phone Number' } );
 As of now, only the following resources are supported:
 - [OTP](#resource__OTP)
     - Sending an OTP
+        - Voice
+        - SMS
     - Validating a OTP
 
-However, in this, you have the choice of sending a custom OTP or a automatically generated one.
+- [Transactional SMS](#sms__transactional)
+    - Sending a Message
+        - Open Template
+        - Dynamic Template
+    - Checking the Balance
 
 ## <a name="resource__OTP"></a> `OTP`
 Gives you access to the sending and validation mechanisms for One-Time Passwords.
@@ -163,6 +170,72 @@ The `parameters` object is required and it can have the following properties:
 #### Return Value
 A promise, which when resolved, signifies that the OTP matched; rejects otherwise.
 
+## <a name="resource__Transactional"></a> `Transactional`
+Helps you send transactional messages based on dynamic or open templates.
+
+### Basic Usage
+```js
+apiObject.Transactional.sendMessage( {
+    to: 'XXXXXXXXX',
+    from: 'Your Short Code',
+    templateName: 'Template Name',
+    var1: 'Variable 1'
+} ).then( console.log ).catch( console.error );
+```
+
+### Functions
+The following functions are supported.
+
+### `getBalance`
+Gets the balance for the account.
+
+#### General Syntax
+
+`.getBalance()`
+
+#### Return Value
+A promise, which when resolves, gives the amount of credits left.
+
+### `sendMessage`
+Send a message to the specified phone number(s).
+
+#### General Syntax
+
+`.sendMessage( parameters: { Object } )`
+
+#### `parameters`
+
+The `parameters` object can have the following properties:
+
+- `from`
+
+    Type: `String, required`
+
+- `to`
+
+    Type: `String or Array, required`
+
+- `templateName`
+
+    Type: `String`
+
+    Required when `templateType` is `Transactional.TemplateTypes.dynamic`.
+
+- `templateType`
+
+    Type: `Constance`
+
+    Can be one of [Transactional.TemplateTypes](#constants__Transactional--TemplateTypes)
+
+- `message`
+
+    Type: `String`
+
+    Required when `templateType` is `Transactional.TemplateTypes.open`.
+
+#### Return Value
+A promise, which when resolved, gives the Session ID.
+
 ---
 
 ## Global Constants
@@ -173,6 +246,11 @@ Specifies the way the OTP will be delivered. It can be `.sms` or `.voice`.
 
 ### <a name="constants__OTP--OtpTypes"></a> `OTP.OtpTypes`
 Specifies if the OTP should be generated automatically or if it should use a user-defined value. It can be `.custom` or `.auto`.
+
+### <a name="constants__Transactional--TemplateTypes"></a> `Transactional.TemplateTypes`
+Specifies the type of the template you are using for sending a transactional message. It can be `.open` or `.dynamic`.
+
+Remember, for the `open` template type, you need to sign up and complete the legal formality with 2Factor as mentioned [here](https://2fa.api-docs.io/v1/send-transactional-sms/transactional-sms-api-2factor-send-sms) in accordance with the rules set by TRAI.
 
 ---
 

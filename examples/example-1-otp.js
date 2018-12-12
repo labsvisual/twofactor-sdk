@@ -7,14 +7,16 @@ const testFunction = async () => {
     try {
 
         const response = await apiInstance.OTP.sendOtp( {
-            phoneNumber: 'XXXXXXXXXX'
-            // deliveryType: apiInstance.DeliveryTypes.voice
+            phoneNumber: 'XXXXXXXXXX',
+            deliveryType: apiInstance.DeliveryTypes.sms // Default; it can also be .voice
         } );
 
         console.log( response );
 
-    } catch (error) {
+    } catch ( error ) {
+
         console.log( 'Error: ', error );
+
     }
 
 };

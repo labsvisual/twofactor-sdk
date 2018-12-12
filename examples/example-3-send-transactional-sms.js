@@ -6,10 +6,11 @@ const testFunction = async () => {
 
     try {
 
-        const response = await apiInstance.OTP.verifyOtp( {
-            otp: '123456',
-            sessionId: 'some-guid-here',
-            deliveryType: apiInstance.DeliveryTypes.sms // Default; it can also be .voice
+        const response = await apiInstance.Transactional.sendMessage( {
+            to: 'XXXXXXXXX', // [ 'Phone 1', 'Phone 2' ]
+            from: 'Your Short Code',
+            templateName: 'Template Name',
+            var1: 'Variable 1'
         } );
 
         console.log( response );
