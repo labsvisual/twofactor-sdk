@@ -1,0 +1,136 @@
+{
+    "$root": {
+        "allowUndefined": false,
+        "allowNull": false,
+        "allowedTypes": "object"
+    },
+    "from": {
+        "allowedTypes": "string"
+    },
+    "to": {
+        "allowedTypes": [ "string", "array" ]
+    },
+    "message": {
+        "allowedTypes": "string",
+        "when": {
+            "key": "templateType",
+            "value": "open"
+        }
+    },
+    "templateName": {
+        "allowedTypes": "string",
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "templateType": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "oneOf": [ "open", "dynamic" ]
+    },
+    "sendAt": {
+        "allowedTypes": "date",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "open"
+        }
+    },
+    "var1": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "var2": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "var3": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "var4": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "var5": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "var6": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "var7": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "var8": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "var9": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "var10": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "var11": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    },
+    "var12": {
+        "allowedTypes": "string",
+        "isOptional": true,
+        "when": {
+            "key": "templateType",
+            "value": "dynamic"
+        }
+    }
+}
